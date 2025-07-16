@@ -18,3 +18,7 @@ jobs:
       - run: npm install
       - run: chmod +x ./node_modules/.bin/jest
       - run: npx jest --coverage
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
