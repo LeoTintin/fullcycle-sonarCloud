@@ -1,16 +1,20 @@
 name: ci-sonarCloud
+
 on:
   pull_request:
     branches:
       - develop
+
 jobs:
   run-ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - run: npm install
-      - run: npm install jest
+      - run: chmod +x ./node_modules/.bin/jest
       - run: npx jest --coverage
